@@ -56,3 +56,54 @@ editButtonSec.addEventListener("click", function() {
     secondCard.style.color = "green";
     }
 });
+
+
+// Fonctionnalité n°5 =====================================
+
+let navbar = document.getElementsByClassName("navbar")[0];
+
+navbar.addEventListener("dblclick", function() {
+    let linkTag = document.querySelector('link[href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"]');
+
+    if (linkTag.disabled) {
+        linkTag.disabled = false; // Réactiver le lien CSS
+    } else {
+        linkTag.disabled = true; // Désactiver le lien CSS
+    }
+});
+
+
+// Fonctionnalité n°6 =====================================
+
+let allCards = document.getElementsByClassName("col-md-4");
+
+for (let i = 0; i < allCards.length; i++) {
+  let btnEditCard = allCards[i].getElementsByTagName("button")[0];
+  let textCard = allCards[i].querySelector(".card-text");
+  let imgCard = allCards[i].querySelector(".card-img-top")
+
+  btnEditCard.addEventListener('mouseover', reduceCard);
+
+  function reduceCard() {
+    textCard.classList.toggle("collapse");
+      if(imgCard.style.width == false) {
+      imgCard.style.width = '20%';
+    } else if(imgCard.style.width == '20%') {
+      imgCard.style.width = '';
+    }
+  }
+}
+
+
+// Fonctionnalité n°7 =====================================
+
+let rotateBtn = document.querySelector("a.btn-secondary");
+
+rotateBtn.addEventListener("click", rotateCards);
+
+function rotateCards() {
+    let parent = document.querySelector(".album .row");
+    let lastCard = parent.lastElementChild;
+    parent.insertBefore(lastCard, parent.firstElementChild);
+    
+}
